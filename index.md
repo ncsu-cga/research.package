@@ -3,7 +3,7 @@ layout: single
 #title: Welcome to Research Package
 ---
 
-Welcome to the Research Package wiki!
+## Welcome to the Research Package wiki!
 
 Research Package is a cross platform Flutter package and UX framework for building research study applications.
 
