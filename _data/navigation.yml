@@ -1,0 +1,9 @@
+main:
+  - title: "Software Architecture"
+    url: /software-architecture
+  - title: "Survey"
+    url: /survey
+  - title: "Consent"
+    url: /consent
+  - title: "About"
+    url: /about
