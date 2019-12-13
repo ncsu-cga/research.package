@@ -47,7 +47,7 @@ In order to create the question step we have to set up the answer format first w
 
 The UI representation of this Answer Format looks like this:
 
-<img src="https://github.com/cph-cachet/research.package/blob/master/documentation/images/SingleChoiceAnswerFormat.png" width="300">
+<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/SingleChoiceAnswerFormat.png" width="300">
 
 Here's how to create a single choice answer format:
 
