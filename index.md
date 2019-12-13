@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Welcome to Research Package
+#title: Welcome to Research Package
 ---
 
 Welcome to the Research Package wiki!
