@@ -16,7 +16,7 @@ The Research Package is trying to follow the object hierarchy and naming of Appl
 
 ## Table of Contents
 
-1. [About Research Package](/about/)
+1. [About Research Package](/about-research-package)
 2. [Software Architecture](/software-architecture)
 3. [Tutorial on how to obtain informed consent with Research Package](/consent)
 4. [Tutorial on how to create surveys with Research Package](/survey)
