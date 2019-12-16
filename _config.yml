@@ -260,10 +260,10 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      sidebar:
+        - title: "Reseach Package"
+          image: "./assets/images/logo.png"
+          text: "Research Package made and maintained by CACHET. \n\nhttps://github.com/cph-cachet/research.package"
 
+      #author_profile: true
 
-sidebar:
-  - title: "Reseach Package"
-    image: "./assets/images/logo.png"
-    text: "Research Package made and maintained by CACHET. \nhttps://github.com/cph-cachet/research.package"
