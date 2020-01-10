@@ -5,15 +5,14 @@ permalink: /software-architecture
 toc: true
 ---
 
-## Domain Model
+# Data Flow
 
-## Data Flow
+Research Package uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
+There is a BLoC file responsible for the communication between the Task and the Steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the Question Container and their Question Body is made possible by regular callback functions.
 
-Research Package uses streams for internal communication (e.g. between Task and Steps). This is made possible by streams controlled in two BLoC files: [BlocQuestion]() and [BlocTask]().
+## Bloc
 
-The former is containing the StreamControllers for providing the communication between the QuestionSteps and the QuestionStepBodies. The latter is providing communication channels between the Task and the Steps it's containing.
-
-### Bloc
+The [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is only holding the StreamControllers needed for the communication.
 
 ## Results
 
@@ -35,6 +34,5 @@ Here you can see an example figure and the actual hierarchy of a result collecte
 
 Here you can see an example figure and the actual hierarchy of a result collected after a consent document task:
 
-<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_figure.png" height="300">
-
+<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_figure.png" height="300"> 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_screenshot.png" height="600">

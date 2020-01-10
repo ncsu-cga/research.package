@@ -1,9 +1,11 @@
 main:
   - title: "Software Architecture"
     url: /software-architecture
-  - title: "Survey"
+  - title: "Survey Tutorial"
     url: /survey
-  - title: "Consent"
+  - title: "Consent Tutorial"
     url: /consent
+  - title: "Answer Formats"
+    url: /answer-formats
   - title: "About"
     url: /about-research-package
