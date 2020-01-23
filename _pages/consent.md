@@ -102,9 +102,7 @@ This is done using the UI library of ResearchPackage.
 The [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on each step objects in the task. It also gives you the possibility to gather the results which is the signature in this case. 
 
 This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget.
-Therefore the recommended usage is to create a route which returns an [`RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
-This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. so the recommended usage is to create a route which returns an [RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
-This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. so the recommended usage is to create a route which returns an [RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
+Therefore the recommended usage is to create a route which returns an [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
 
 ``` dart
 class ConsentDocumentTaskRoute extends StatelessWidget {
@@ -120,11 +118,11 @@ class ConsentDocumentTaskRoute extends StatelessWidget {
 
 ## Collecting results
 
-Gathering the results from a task is made possible by passing a callback function to the [RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's onSubmit input parameter. The onSubmit event is triggered when the user has finished with the last step in the the list of steps passed to the Task object.
+Getting the result from a task is done by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's `onSubmit`  parameter. 
+The onSubmit event is triggered when the user finishes the last step in the the list of steps in the task.
 
-**To learn more about the result objects and their structure visit the [corresponding page](https://github.com/cph-cachet/research.package/wiki/2.-Software-Architecture#results-hierarchy).**
-
-You should create a function which needs an input parameter with [RPTaskResult](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) type. A minimum example is the following:
+You should create a function which takes an input parameter with [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) type. 
+A minimum example is the following:
 
 ``` dart
 void resultCallback(RPTaskResult result) {
@@ -134,7 +132,8 @@ void resultCallback(RPTaskResult result) {
 }
 ```
 
-After creating the function you just have to pass it to the Task widget when creating. This changes the build function of our example above to the following:
+When this function is defined, you just pass it to the task widget when constructed.
+This changes the our example above to the following:
 
 ``` dart
 @override
