@@ -15,7 +15,7 @@ Creating surveys is one of the core features of ResearchPackage. This tutorial w
 ## Domain Model - Task, Step & Result
 
 Overall, ResearchPackage uses a `Task` to represent the survey containing a list of `Step`s, which each returns a `Result`.
-The task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
+The task object will be an [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
 Results are saved as [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) objects.
 
 
