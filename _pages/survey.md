@@ -86,13 +86,13 @@ RPQuestionStep choiceQuestionStep = RPQuestionStep.withAnswerFormat(
 ```
 #### Multiple Choice
 
-The multiple choice question is similar to the Single Choice with the difference that the participant is allowed to choose more than one option from the presented choices.
+The multiple choice question is similar to the single choice with the difference that the participant is allowed to choose more than one option from the presented choices.
 
 The UI representation of this answer format looks like this (see that the small hint text below the title has changed indicating that the participant is allowed to choose more options as well):
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/MultipleChoiceAnswerFormat.png" width="300">
 
-The creation of a Question Step like that is similar to the Single Choice Answer Format presented above. First the [`RPChoice`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html) objects need to be created and then passed to the the constructor of the [`RPChoiceAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoiceAnswerFormat-class.html) used with the Multiple Choice [`ChoiceAnswerStyle`](https://pub.dev/documentation/research_package/latest/research_package_model/ChoiceAnswerStyle-class.html) like this: 
+The creation of a question step like that is similar to the single choice answer format presented above. First the [`RPChoice`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html) objects need to be created and then passed to the the constructor of the [`RPChoiceAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoiceAnswerFormat-class.html) used with the multiple choice [`ChoiceAnswerStyle`](https://pub.dev/documentation/research_package/latest/research_package_model/ChoiceAnswerStyle-class.html) like this: 
 
 ```dart
 // Pass the list of choices to the answer format constructor
@@ -100,31 +100,28 @@ RPChoiceAnswerFormat choiceAnswerFormat = RPChoiceAnswerFormat.withParams(Choice
 ```
 #### Integer
 
-With the Integer question the participants can enter a number between previously set upper and lower limit. As help a suffix can be also specified indicating for example the unit of the number (e.g. minutes, age...).
-
-The UI representation of this Answer Format looks like the following:
+Using an integer answer format, participants can enter a number within an pre-defined range. A suffix can be specified indicating for example the unit of the number (e.g. minutes, age...).
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/IntegerAnswerFormat.png" width="300">
 
-First, the [`RPIntegerAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPIntegerAnswerFormat-class.html) needs to be instantiated by giving the constructor the lower limit, the upper limit and the suffix.
+The [`RPIntegerAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPIntegerAnswerFormat-class.html) needs to be instantiated by giving the constructor the lower limit, the upper limit and the suffix.
 
 ```dart
 RPIntegerAnswerFormat weightIntegerAnswerFormat = RPIntegerAnswerFormat.withParams(0, 200, "KG");
 ```
 
-Research Package will check if the input is an actual number and between the limits and lets the participant proceed only if these conditions suffice.
+Research Package will check if the input is an actual number and between the limits and lets the participant proceed only if these conditions are meet.
 
 ### Form Step
 
-There are situation when it's beneficial to show multiple questions on the same page as one logical block. For these needs you can use the [`RPFormStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormStep-class.html). A Form Step consists of multiple [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html)s. (_Read more about it by clicking the links which brings you to the official API documentation_).
+There are situation when it's beneficial to show multiple questions on the same page as one logical block. 
+For this, the [`RPFormStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormStep-class.html) can be used. A form step consists of multiple [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) steps.
 
 The form step is showing the question steps as a scrollable list. On the UI it looks like this:
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/FormAnswerFormat.png" width="300">
 
-The creation process of a Form Step works as the following:
-
-First, create the Question Steps to show on the page:
+To create a frm step works, first create the question steps to be shown on the page:
 
 ```dart
 // This is a Question Step with a Multiple Choice Answer Format. See how to create it above
@@ -136,17 +133,19 @@ RPQuestionStep minutesQuestionStep =
 RPQuestionStep.withAnswerFormat("minutesQuestionStepID", "How many minutes do you spend practicing a week?", minutesIntegerAnswerFormat);
 ```
 
-Then, after the Question Steps are created add them to the constructor of a Form Step as a list.
+Then, after the question steps are created add them to the constructor of a Form Step as a list.
 
 ```dart
 RPFormStep formStep = RPFormStep.withTitle("formstepID",[instrumentChoiceQuestionStep, minutesQuestionStep], "Questions about music");
 ```
 
 > **What Answer Format does the Form Step has?**
-> As every Question Step, a Form Step also needs an Answer Format. Since it has multiple questions embedded it would be difficult to figure out which Answer Format to use. To solve this Research Package has a special Answer Format, the [`RPFormAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormAnswerFormat-class.html). Since a Form Step can only take this specific Answer Format you don't have to give it to it. Research Package sets the corresponding value automatically as part of the constructor.
+> As every question step, a form step also needs an answer format. Since it has multiple questions embedded it would be difficult to figure out which answer format to use. To solve this, ResearchPackage has a special answer format; the [`RPFormAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormAnswerFormat-class.html). Since a form step can only take this specific answer format you don't have to give it to it. ResearchPackage sets the corresponding value automatically as part of the constructor.
 
 ### Completion Step
-Although it's not obligatory, creating a Completion Step and appending it to the list of steps is a good idea because we can assure the user that we saved the result and the survey is over. Here's how to create an [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html):
+
+Although it's not mandatory, creating a completion step and appending it to the list of steps is a good design choice because we can make sure the user did the survey and the result is saved. 
+Here's how to create an [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html):
 
 ``` dart
 RPCompletionStep completionStep = RPCompletionStep("completionStepID")
@@ -155,7 +154,8 @@ RPCompletionStep completionStep = RPCompletionStep("completionStepID")
 ```
 ## The Survey Task
 
-Now that you have all the needed steps, you can create the Task for the survey. To do so you have to create an [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) with a unique string identifier and the list of previously created steps.
+Now that you have all the needed steps, you can create the task for the survey. 
+This is done by creating a [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) object with a unique string identifier and the list of previously created steps.
 
 ``` dart
 RPOrderedTask surveyTask = RPOrderedTask("surveyTaskID", [consentVisualStep, choiceQuestionStep, completionStep]);
@@ -163,11 +163,12 @@ RPOrderedTask surveyTask = RPOrderedTask("surveyTaskID", [consentVisualStep, cho
 
 ## Presenting the Task
 
-The next step is to present the Survey Task (`surveyTask`). To achieve this you have to use the UI library of Research Package.
+The next step is to present the survey task (e.g., `surveyTask`).
+To achieve this you have to use the UI library of Research Package.
 
-The [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on the Step objects in the Task object. It also gives you the possibility to gather the results. (For the result hierarchy see the section later) 
+The [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on the Step objects in the Task object. It also gives you the possibility to gather the results (for the result domain model, see the next section). 
 
-This widget returns a full screen [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget so the recommended usage is to create a route which returns an [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
+This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget so the recommended usage is to create a route which returns an [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
 
 ``` dart
 class SurveyTaskRoute extends StatelessWidget {
@@ -181,9 +182,9 @@ class SurveyTaskRoute extends StatelessWidget {
 }
 ```
 
-## Collecting results
+## Collecting Results
 
-Gathering the results from a task is made possible by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's onSubmit input parameter. The onSubmit event is triggered when the user has finished with the last step in the the list of steps passed to the Task object.
+Gathering the results from a task is done by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's `onSubmit` input parameter. The `onSubmit` event is triggered when the user has finished with the last step in the the list of steps passed to the task object.
 
 **To learn more about the result objects and their structure visit the [corresponding page](https://github.com/cph-cachet/research.package/wiki/2.-Software-Architecture#results-hierarchy).**
 
