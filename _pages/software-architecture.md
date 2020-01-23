@@ -14,6 +14,11 @@ We are following the pattern from Apple's Research Kit's when it comes to naming
 
 For UI widgets we are using the `RPUI` (Research Package UI) prefix.
 
+> Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
+
+
+
+
 
 ### Data Flow
 
@@ -47,6 +52,12 @@ Here you can see an example figure and the actual hierarchy of a result collecte
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_figure.png" height="300"> 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_screenshot.png" height="600">
 
+## Style and UI Theme
+
+Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the example application where the Theme colors of the parent application are set to different colors.
+
+On how to Theme your application see the following article by the Flutter team: https://flutter.dev/docs/cookbook/design/themes
+
 
 ## How to set up a Research Package project
 
@@ -70,15 +81,6 @@ Or with the following lines you can decide which library of the package you want
 import 'package:research_package/model.dart';
 import 'package:research_package/ui.dart';
 ```
-
-> Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
-
-## Style and UI Theme
-
-Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the example application where the Theme colors of the parent application are set to different colors.
-
-On how to Theme your application see the following article by the Flutter team: https://flutter.dev/docs/cookbook/design/themes
-
 
 ## Limitations
 
