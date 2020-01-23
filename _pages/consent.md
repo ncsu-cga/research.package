@@ -96,11 +96,15 @@ RPOrderedTask consentTask = RPOrderedTask("consentTaskID", [consentVisualStep, c
 
 ## Presenting the Task
 
-The next step is to present the Consent Task. To achieve this you have to use the UI library of Research Package.
+The next step is to present the consent task. 
+This is done using the UI library of ResearchPackage.
 
-The [RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on the Step objects in the Task object. It also gives you the possibility to gather the results which is the signature in this case. 
+The [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on each step objects in the task. It also gives you the possibility to gather the results which is the signature in this case. 
 
-This widget returns a full screen [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget so the recommended usage is to create a route which returns an [RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
+This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget.
+Therefore the recommended usage is to create a route which returns an [`RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
+This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. so the recommended usage is to create a route which returns an [RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
+This widget returns a full screen [`Scaffold`](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget. so the recommended usage is to create a route which returns an [RPUIOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
 
 ``` dart
 class ConsentDocumentTaskRoute extends StatelessWidget {
