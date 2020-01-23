@@ -12,16 +12,16 @@ For all the available answer formats please see the [list of available Answer Fo
 
 Creating surveys is one of the core features of ResearchPackage. This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it in the UI, how to combine different questions on one screen, and finally how to collect the results.
 
-## Creating Model Objects
+## Creating Model Objects - Task & Step
 
 ResearchPackage uses a `Task` to represent the survey containing the `Step`s. In this case the task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
 Optionally, [`RPInstructionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html) can be put in the beginning and [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html) can be put in the end)
 
 > Later, you will see that `.withParams` constructors are being used. This is needed because of the JSON serialization which requires an empty constructor for all the classes eligible for serialization.
 
-### Creating steps
-#### Instruction Step
-You can present instructions to the user, put them to context or show footnotes with the [RPInstructionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html). An Instruction Step is useful any time you want to provide some instruction for the user at the beginning or during a survey.
+### Instruction Step
+You can present instructions to the user, put them to context or show footnotes with the [`RPInstructionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html). 
+An instruction step is useful any time you want to provide some instruction for the user at the beginning or during a survey.
 Here's how you can create one:
 
 ``` dart
@@ -35,14 +35,14 @@ RPInstructionStep instructionStep = RPInstructionStep(
       "Please indicate for each of the five statements which is closest to how you have been feeling over the last two weeks. Notice that higher numbers mean better well-being.";
 ```
 
-#### QuestionStep 
-Let's create an actual Question Step. An [RPQuestionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) is a generic step that needs a child of [RPAnswerFormat](https://pub.dev/documentation/research_package/latest/research_package_model/RPAnswerFormat-class.html) on which depends what kind of question will the step present.
+### QuestionStep 
+Let's create an actual question step. An [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) is a generic step that needs a child of [`RPAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPAnswerFormat-class.html) on which depends what kind of question will the step present.
 
-You can create as many question steps as you desire.
+You can create as many question steps as you want.
 
-Let's have a look at the available Answer Formats in Research Package.
+Let's have a look at the available answer formats in ResearchPackage.
 
-##### Single Choice
+#### Single Choice
 
 In order to create the question step we have to set up the answer format first with a list of choices ([RPChoice](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html)) and the answer style. An `RPChoice` has a text which will be presented to the participant and a value which can be used for other purposes. When saving the result both of the fields will be saved.
 
@@ -80,7 +80,7 @@ RPQuestionStep choiceQuestionStep = RPQuestionStep.withAnswerFormat(
   choiceAnswerFormat,
 );
 ```
-##### Multiple Choice
+#### Multiple Choice
 
 The Multiple Choice question is similar to the Single Choice with the difference that the participant is allowed to choose more than one option from the presented choices.
 
@@ -94,7 +94,7 @@ The creation of a Question Step like that is similar to the Single Choice Answer
 // Pass the list of choices to the answer format constructor
 RPChoiceAnswerFormat choiceAnswerFormat = RPChoiceAnswerFormat.withParams(ChoiceAnswerStyle.MultipleChoice, choices);
 ```
-##### Integer
+#### Integer
 
 With the Integer question the participants can enter a number between previously set upper and lower limit. As help a suffix can be also specified indicating for example the unit of the number (e.g. minutes, age...).
 
@@ -110,7 +110,7 @@ RPIntegerAnswerFormat weightIntegerAnswerFormat = RPIntegerAnswerFormat.withPara
 
 Research Package will check if the input is an actual number and between the limits and lets the participant proceed only if these conditions suffice.
 
-#### Form Step
+### Form Step
 
 There are situation when it's beneficial to show multiple questions on the same page as one logical block. For these needs you can use Form Step ([RPFormStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormStep-class.html)). A Form Step consists of multiple [RPQuestionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html)s. (_Read more about it by clicking the links which brings you to the official API documentation_).
 
@@ -141,7 +141,7 @@ RPFormStep formStep = RPFormStep.withTitle("formstepID",[instrumentChoiceQuestio
 > **What Answer Format does the Form Step has?**
 > As every Question Step, a Form Step also needs an Answer Format. Since it has multiple questions embedded it would be difficult to figure out which Answer Format to use. To solve this Research Package has a special Answer Format, the [RPFormAnswerFormat](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormAnswerFormat-class.html). Since a Form Step can only take this specific Answer Format you don't have to give it to it. Research Package sets the corresponding value automatically as part of the constructor.
 
-#### Completion Step
+### Completion Step
 Although it's not obligatory, creating a Completion Step and appending it to the list of steps is a good idea because we can assure the user that we saved the result and the survey is over. Here's how to create an [RPCompletionStep]():
 
 ``` dart
