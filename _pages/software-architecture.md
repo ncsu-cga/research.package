@@ -56,7 +56,7 @@ Here you can see an example figure and the actual hierarchy of a result collecte
 
 Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the example application where the Theme colors of the parent application are set to different colors.
 
-On how to Theme your application see the following article by the Flutter team: https://flutter.dev/docs/cookbook/design/themes
+See [this article by the Flutter team](https://flutter.dev/docs/cookbook/design/themes) on how to Theme your application.
 
 
 ## How to set up a Research Package project
