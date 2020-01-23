@@ -10,7 +10,7 @@ toc: true
 
 First you have to create your consent document model using the ResearchPackage classes.
 
-First, the sections of the consent document ([RPConsentDocument](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html)) has to be created.
+First, the sections of the consent document ([`RPConsentDocument`](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html)) has to be created.
 ResearchPackage provides eigth predefined sections types with corresponding images and animations, plus a "Custom" option to build you own:
 
 * Overview,
@@ -61,7 +61,7 @@ myConsentDocument.addSignature(mySignature);
 ### The Consent Task
 
 As described in the [architecture](software-architecture), ResearchPackage uses a task as its core organizational unit. 
-A [RPOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) is a sequence of steps where the sequence can not be changed.
+A [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) is a sequence of steps where the sequence can not be changed.
 
 To create a consent task you need two steps:
 
