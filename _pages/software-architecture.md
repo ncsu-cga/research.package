@@ -14,39 +14,30 @@ We are following the pattern from Apple's Research Kit's when it comes to naming
 
 > Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
 
-### Data Flow
-
-Research Package uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
-There is a BLoC file responsible for the communication between the Task and the Steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the Question Container and their Question Body is made possible by regular callback functions.
-
-### Bloc
+### BLoC Architecture
 
 ResearchPackage follows the [BLoC architecture](https://medium.com/flutterpub/architecting-your-flutter-project-bd04e144a8f1),
 which is recommended by the [Flutter Team](https://www.youtube.com/watch?v=PLHln7wHgPE).
 In ResearchPackage, the [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is holding the StreamControllers needed for the communication.
 
-### Results
+### Data Flow
 
-There are steps which can produce [RPStepResult]() e.g. [RPQuestionStep]() or [RPConsentReviewStep](). The task widget [RPUIOrderedTask]() collects these Step Results as the user is proceeding through the task in order to create the [RPTaskResult]() which is accessible by passing a callback function to the Task widget's `onSubmit` property.
+Research Package uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
+There is a BLoC file responsible for the communication between the Task and the Steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the Question Container and their Question Body is made possible by regular callback functions.
 
-Both of the task and step result objects are collection results which means that they can contain other results (e.g. the task result holds the array of step results).
 
-Every result ([RPResult]()) has an identifier which connects it to the task or step which produced it. The identifier of the result is identical to the identifier of its task or step.
 
-Also results have a `startDate` and `endDate` property. Based on that the time spent on the given task/step/question can be calculated. (Some results for example [RPSignatureResult]() doesn't have its `startDate` filled out. In that case only the `endDate` is relevant which in this case is the exact time of the signature.)
+### Main Domain Model
 
-The result hierarchy corresponds closely to the hierarchy of the building model of tasks and steps.
+Overall, ResearchPackage uses a `Task` to represent the survey containing a list of `Step`s, which each returns a `Result`.
+In the API, the task is an [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) object and the steps are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
+Results are saved as [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) objects.
 
-Here you can see an example figure and the actual hierarchy of a result collected after a survey task:
+Below is an example of a hierarchy with a task, three steps, each with a specific answer type.
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/survey_result_hierarchy_figure.png" height="150">
 
-<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/survey_result_hierarchy_screenshot.png" height="600">
 
-Here you can see an example figure and the actual hierarchy of a result collected after a consent document task:
-
-<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_figure.png" height="300"> 
-<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_screenshot.png" height="600">
 
 ## Style and UI Theme
 
