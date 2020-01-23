@@ -143,10 +143,10 @@ RPFormStep formStep = RPFormStep.withTitle("formstepID",[instrumentChoiceQuestio
 ```
 
 > **What Answer Format does the Form Step has?**
-> As every Question Step, a Form Step also needs an Answer Format. Since it has multiple questions embedded it would be difficult to figure out which Answer Format to use. To solve this Research Package has a special Answer Format, the [RPFormAnswerFormat](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormAnswerFormat-class.html). Since a Form Step can only take this specific Answer Format you don't have to give it to it. Research Package sets the corresponding value automatically as part of the constructor.
+> As every Question Step, a Form Step also needs an Answer Format. Since it has multiple questions embedded it would be difficult to figure out which Answer Format to use. To solve this Research Package has a special Answer Format, the [`RPFormAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormAnswerFormat-class.html). Since a Form Step can only take this specific Answer Format you don't have to give it to it. Research Package sets the corresponding value automatically as part of the constructor.
 
 ### Completion Step
-Although it's not obligatory, creating a Completion Step and appending it to the list of steps is a good idea because we can assure the user that we saved the result and the survey is over. Here's how to create an [RPCompletionStep]():
+Although it's not obligatory, creating a Completion Step and appending it to the list of steps is a good idea because we can assure the user that we saved the result and the survey is over. Here's how to create an [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html):
 
 ``` dart
 RPCompletionStep completionStep = RPCompletionStep("completionStepID")
@@ -155,7 +155,7 @@ RPCompletionStep completionStep = RPCompletionStep("completionStepID")
 ```
 ## The Survey Task
 
-Now that you have all the needed steps, you can create the Task for the survey. To do so you have to create an [RPOrderedTask]() with a unique string identifier and the list of previously created steps.
+Now that you have all the needed steps, you can create the Task for the survey. To do so you have to create an [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) with a unique string identifier and the list of previously created steps.
 
 ``` dart
 RPOrderedTask surveyTask = RPOrderedTask("surveyTaskID", [consentVisualStep, choiceQuestionStep, completionStep]);
@@ -165,9 +165,9 @@ RPOrderedTask surveyTask = RPOrderedTask("surveyTaskID", [consentVisualStep, cho
 
 The next step is to present the Survey Task (`surveyTask`). To achieve this you have to use the UI library of Research Package.
 
-The [RPUIOrderedTask]() class will automatically present the task based on the Step objects in the Task object. It also gives you the possibility to gather the results. (For the result hierarchy see the section later) 
+The [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) class will automatically present the task based on the Step objects in the Task object. It also gives you the possibility to gather the results. (For the result hierarchy see the section later) 
 
-This widget returns a full screen [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget so the recommended usage is to create a route which returns an [RPUIOrderedTask]() and then navigate to this route. The minimum example is the following:
+This widget returns a full screen [Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html) widget so the recommended usage is to create a route which returns an [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) and then navigate to this route. The minimum example is the following:
 
 ``` dart
 class SurveyTaskRoute extends StatelessWidget {
@@ -183,11 +183,12 @@ class SurveyTaskRoute extends StatelessWidget {
 
 ## Collecting results
 
-Gathering the results from a task is made possible by passing a callback function to the [RPUIOrderedTask]() widget's onSubmit input parameter. The onSubmit event is triggered when the user has finished with the last step in the the list of steps passed to the Task object.
+Gathering the results from a task is made possible by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's onSubmit input parameter. The onSubmit event is triggered when the user has finished with the last step in the the list of steps passed to the Task object.
 
 **To learn more about the result objects and their structure visit the [corresponding page](https://github.com/cph-cachet/research.package/wiki/2.-Software-Architecture#results-hierarchy).**
 
-You should create a function which needs an input parameter with [RPTaskResult]() type. A minimum example is the following:
+You should create a function which needs an input parameter with [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) type. 
+A minimum example is the following:
 
 ``` dart
 void resultCallback(RPTaskResult result) {
