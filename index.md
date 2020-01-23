@@ -5,6 +5,8 @@ layout: single
 
 [![pub package](https://img.shields.io/pub/v/research_package.svg)](https://pub.dartlang.org/packages/research_package)
 
+Jakob : should remove the icon....
+
 Research Package is a Flutter package for creating surveys and obtaining informed consent containing models, UI elements and screens. 
 The motivation is coming from two similar native libraries [ResearchStack](http://researchstack.org/) on Android and [ResearchKit](http://researchkit.org/) on iOS.
 
