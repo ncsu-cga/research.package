@@ -8,7 +8,7 @@ toc: true
 > ## Attention
 > Research Package supports only a limited set of answer formats at the moment. 
 single choice, multiple choice, integer, slider, date time, image choice) This tutorial is limited to present some of these scenarios and giving an introduction on how to combine them into one question (Form step).
-For all the available answer formats please visit the corresponding [site about available Question Types (Answer Formats)](/answer-formats)!
+For all the available answer formats please see the [list of available Answer Formats](/answer-formats)!
 
 Creating surveys is on of Research Package main modules (besides obtaining informed consent). This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it on the UI, how to combine different questions on one screen and finally how to collect the results.
 
