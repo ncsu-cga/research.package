@@ -1,5 +1,5 @@
 main:
-  - title: "AArchitecture"
+  - title: "Architecture"
     url: /software-architecture
   - title: "Tutorials"
     sublinks:
