@@ -14,7 +14,8 @@ Creating surveys is one of the core features of ResearchPackage. This tutorial w
 
 ## Creating Model Objects - Task & Step
 
-ResearchPackage uses a `Task` to represent the survey containing the `Step`s. In this case the task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
+ResearchPackage uses a `Task` to represent the survey containing a list of `Step`s. 
+The task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
 Optionally, [`RPInstructionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html) can be put in the beginning and [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html) can be put in the end)
 
 > Later, you will see that `.withParams` constructors are being used. This is needed because of the JSON serialization which requires an empty constructor for all the classes eligible for serialization.
