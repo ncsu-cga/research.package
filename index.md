@@ -1,6 +1,6 @@
 ---
 layout: single
-#title: Welcome to Research Package - Jakob was here
+#title: Welcome to Research Package
 ---
 
 [![pub package](https://img.shields.io/pub/v/research_package.svg)](https://pub.dartlang.org/packages/research_package)
