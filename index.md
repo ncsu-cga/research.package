@@ -3,8 +3,6 @@ layout: single
 #title: Welcome to ResearchPackage
 ---
 
-# Welcome to ResearchPackage
-
 ResearchPackage is a Flutter [package](https://pub.dartlang.org/packages/research_package) for building research study apps on Android and iOS using [Flutter](https://flutter.dev).
 
 ResearchPackage is a Flutter implementation of the [Apple ResearchKit](https://www.researchandcare.org/researchkit/) available for iOS (just like  [ResearchStack](http://researchstack.org/)). The overarching goal of ResearchPackage is to enable developers and researchers to design and build cross-platform (iOS and Android) research applications using the same codebase. The API and UX design of ResearchPackage follows the API and UX of ResearchKit almost 1:1 (with a few adaptations to Flutter, including applying more to a reactive programming model).
