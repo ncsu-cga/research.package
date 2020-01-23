@@ -12,11 +12,12 @@ For all the available answer formats please see the [list of available Answer Fo
 
 Creating surveys is one of the core features of ResearchPackage. This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it in the UI, how to combine different questions on one screen, and finally how to collect the results.
 
-## Domain Model - Task & Step
+## Domain Model - Task, Step & Result
 
-ResearchPackage uses a `Task` to represent the survey containing a list of `Step`s. 
+Overall, ResearchPackage uses a `Task` to represent the survey containing a list of `Step`s, which each returns a `Result`.
 The task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
-Optionally, [`RPInstructionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html) can be put in the beginning and [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html) can be put in the end)
+Results are saved as [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) objects.
+
 
 > Later, you will see that `.withParams` constructors are being used. This is needed because of the JSON serialization which requires an empty constructor for all the classes eligible for serialization.
 
