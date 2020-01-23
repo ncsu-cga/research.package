@@ -184,12 +184,23 @@ class SurveyTaskRoute extends StatelessWidget {
 
 ## Collecting Results
 
-Gathering the results from a task is done by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's `onSubmit` input parameter. The `onSubmit` event is triggered when the user has finished with the last step in the the list of steps passed to the task object.
+When a step is done by the user, it produduces a corresponding result object. These are all [`RPStepResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPStepResult-class.html) objects.
+Results from a task is stored in a [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) object.
+Both of the task and step result objects are collection results which means that they can contain other results (e.g. the task result holds the array of step results).
 
-**To learn more about the result objects and their structure visit the [corresponding page](https://github.com/cph-cachet/research.package/wiki/2.-Software-Architecture#results-hierarchy).**
+Every result ([`RPResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPResult-class.html)) has an identifier which connects it to the task or step which produced it. The identifier of the result is identical to the identifier of its task or step.
+Each result also have a `startDate` and `endDate` property. Based on that the time spent on the given task/step/question can be calculated. Some results for example [`RPSignatureResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPSignatureResult-class.html) does not have its `startDate` filled out. In that case only the `endDate` is relevant which in this case is the exact time of the signature.
 
-You should create a function which needs an input parameter with [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) type. 
-A minimum example is the following:
+The result hierarchy corresponds closely to the hierarchy of the building model of tasks and steps.
+Below is an example figure and the actual hierarchy of a result collected after a consent document task:
+
+<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_figure.png" height="300"> 
+<img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/signature_result_hierarchy_screenshot.png" height="600">
+
+
+Gathering the results from a task can be done by passing a callback function to the [`RPUIOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_ui/RPUIOrderedTask-class.html) widget's `onSubmit` input parameter. The `onSubmit` event is triggered when the user has finished with the last step in the the list of steps passed to the task object.
+This callback funtion takes as input parameter the [`RPTaskResult`](https://pub.dev/documentation/research_package/latest/research_package_model/RPTaskResult-class.html) object. 
+An example is listed below:
 
 ``` dart
 void resultCallback(RPTaskResult result) {
