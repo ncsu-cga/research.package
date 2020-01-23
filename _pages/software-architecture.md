@@ -7,7 +7,7 @@ toc: true
 
 This tutotial describes the overall software architecture of ResearchPackage and its API, and how to get started.
 
-## API Naming and Architecture
+## API and Architecture
 
 ### API Naming
 We are following the pattern from Apple's Research Kit's when it comes to naming. ResearchKit uses the prefix `ORK` (Open Research Kit) before the names of classes, types etc. Following this naming model, the the class names in ResearchPackage starts a `RP` prefix. UI widgets uses the `RPUI` (Research Package UI) prefix.
