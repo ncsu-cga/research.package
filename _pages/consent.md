@@ -8,9 +8,11 @@ toc: true
 ## Creating the Consent Document Model
 ### Consent Document Content
 
-First you have to create your consent document model using Research Package classes.
+First you have to create your consent document model using the ResearchPackage classes.
 
-As a first step you have to create the sections which your Consent Document ([RPConsentDocument](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html)) will contain. Research Package provides 8 pre defined section ([RPConsentSectionType]()) type with corresponding images and animation and a "Custom" option to build you own:
+First, the sections of the consent document ([RPConsentDocument](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html)) has to be created.
+ResearchPackage provides eigth predefined sections types with corresponding images and animations, plus a "Custom" option to build you own:
+
 * Overview,
 * DataGathering,
 * Privacy,
@@ -23,7 +25,8 @@ As a first step you have to create the sections which your Consent Document ([RP
 
 > You will see that `.withParams` or `.withIdentifier` constructors are being used. This is needed because of the JSON serialization which requires an empty constructor for all the classes eligible for serialization.
 
-To create a section just instantiate [RPConsentSection]() with a type and then specify the summary (short text under the title) and the content which can be accessed after tapping on the "Learn more" button). The `content` attribute is very important because at the end the user has to agree to all sections `content` field.
+To create a section just instantiate [`RPConsentSection`](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentSection-class.html) with a type and then specify the summary (short text under the title) and the content which can be accessed after tapping on the "Learn more" button). 
+The `content` attribute is core pievce of information to be shown to the user. In the end of the consent flow, the user has to agree to what is stated in each section's `content` field.
 
 ``` dart
 RPConsentSection overviewSection = RPConsentSection.withParams(RPConsentSectionType.Overview)
@@ -34,17 +37,20 @@ RPConsentSection dataGatheringSection = RPConsentSection.withParams(RPConsentSec
 ..summary = "This is a summary for Data Gathering."
 ..content = "Data Gathering dolor sit amet, consectetur adipiscing elit.";
 ```
-A consent document in Research Package is represented by [RPConsentDocument](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html). Create one by specifying the Title and the previously created sections.
+A consent document in ResearchPackage is represented by [`RPConsentDocument`](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentDocument-class.html). 
+Create one by specifying the title and the previously created sections.
+
 ``` dart
 RPConsentDocument myConsentDocument = RPConsentDocument.withParams("Title", [overviewSection, dataGatheringSection]);
 ```
 ### Collecting a Consent Signature
 
-An important part of obtaining the consent document is collecting signatures. Research Package comes with a built-in support for that.
+An important part of obtaining the consent document is collecting the signature from the study participant. 
+ResearchPackage comes with a built-in support for this.
 
-First, you have to specify the signature you want to collect by creating a [RPConsentSignature](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentSignature-class.html) object with a unique id. The default one collects the user's full name and an image of their signature.
+First, you have to specify the signature you want to collect by creating a [`RPConsentSignature`](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentSignature-class.html) object with a unique id. The default one collects the user's full name and an image of the user's signature.
 
-As the next step you have to add this previously created signature to your consent document.
+Then this the signature must be added to the consent document, as shown below:
 
 ``` dart
 RPConsentSignature mySignature = RPConsentSignature.withIdentifier("uniqueSignatureID");
@@ -54,13 +60,15 @@ myConsentDocument.addSignature(mySignature);
 
 ### The Consent Task
 
-As stated in [About Research Package](1.-About-Research-Package) page, Research Package uses Task as its core organizational unit. An [RPOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) is a sequence of steps where the sequence can not be changed.
+As described in the [architecture](software-architecture), ResearchPackage uses a task as its core organizational unit. 
+A [RPOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) is a sequence of steps where the sequence can not be changed.
 
-To create a Consent Task you need two steps:
-- [RPVisualConsentStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPVisualConsentStep-class.html), which is responsible to guide the user through the different content sections in the Consent Document
-- [RPReviewConsentStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentReviewStep-class.html), which is responsible to present the whole Consent Document to the user for review and then collect the signature.
+To create a consent task you need two steps:
 
-Create these two steps! Both of them need a Consent Document object which they will be connected to.
+- [`RPVisualConsentStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPVisualConsentStep-class.html), which is responsible to guide the user through the different content sections in the consent document
+- [`RPReviewConsentStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPConsentReviewStep-class.html), which is responsible to present the whole consent document to the user for review and then collect the signature.
+
+An example of how these two steps are created is shown below:
 
 ``` dart
 RPVisualConsentStep consentVisualStep = RPVisualConsentStep("visualStepID", myConsentDocument);
@@ -71,7 +79,7 @@ RPConsentReviewStep consentReviewStep = RPConsentReviewStep("consentReviewstepID
 ..title = "Consent Review Step Title";
 ```
 
-Optionally, you can also add a Completion Step where you can thank the user for joining the study or communicate some other information. To do so, you have to create an [RPCompletionStep]().
+Optionally, you can also add a completion step in which you thank the user for joining the study or communicate some other information. This is done by creating a [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html).
 
 ``` dart
 RPCompletionStep completionStep = RPCompletionStep("completionStepID")
@@ -79,7 +87,8 @@ RPCompletionStep completionStep = RPCompletionStep("completionStepID")
   ..text = "We saved your consent document";
 ```
 
-Now that you have all the needed steps, you can create the Task for obtaining the consent. To do so you have to create an [RPOrderedTask](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) with a unique string identifier and the list of previously created steps.
+Now that you have all the needed steps, these can be combined into an overal task for obtaining the consent. 
+This is done by creating a [`RPOrderedTask`](https://pub.dev/documentation/research_package/latest/research_package_model/RPOrderedTask-class.html) with a unique string identifier and the list of the previously defined steps.
 
 ``` dart
 RPOrderedTask consentTask = RPOrderedTask("consentTaskID", [consentVisualStep, consentReviewStep, completionStep]);
