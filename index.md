@@ -18,11 +18,11 @@ ResearchPackage is part of the overall CACHET Research Platform (CARP) with also
 
 ## Documentation
 
-There is a set of tutorials, describing the;
+There is a set of tutorials, describing: 
 
-- overall [software architecture](software-architecture) of ResearchPackage
+- the overall [software architecture](software-architecture) of ResearchPackage
 - how to create an [informed consent](consent) flow 
-- how to define and run a set of [user surveys](survey)
+- how to define and run [user surveys](survey)
 
 The [ResearchPackage Flutter API](https://pub.dev/documentation/research_package/latest/) is available (and maintained) as part of the package release at pub.dev.
 
