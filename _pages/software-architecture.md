@@ -5,20 +5,16 @@ permalink: /software-architecture
 toc: true
 ---
 
-This tutotial describes the overall software architecture of ResearchPackage and how to get started.
+This tutotial describes the overall software architecture of ResearchPackage and its API, and how to get started.
 
-## Naming and Architecture
+## API Naming and Architecture
 
-### Naming
+### API Naming
 We are following the pattern from Apple's Research Kit's when it comes to naming. There's a prefix ORK (Open Research Kit) before the names of classes, types etc. Following that the class names are starting with the `RP` prefix which stands for Research Package.
 
 For UI widgets we are using the `RPUI` (Research Package UI) prefix.
 
 > Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
-
-
-
-
 
 ### Data Flow
 
@@ -27,7 +23,9 @@ There is a BLoC file responsible for the communication between the Task and the 
 
 ### Bloc
 
-The [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is only holding the StreamControllers needed for the communication.
+ResearchPackage follows the [BLoC architecture](https://medium.com/flutterpub/architecting-your-flutter-project-bd04e144a8f1),
+which is recommended by the [Flutter Team](https://www.youtube.com/watch?v=PLHln7wHgPE).
+In ResearchPackage, the [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is holding the StreamControllers needed for the communication.
 
 ### Results
 
