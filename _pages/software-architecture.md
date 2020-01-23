@@ -87,4 +87,4 @@ import 'package:research_package/ui.dart';
 Research Package currently supports only a few [answer formats](answer-formats) which can be put on the separate pages or combined in one page (using a `FormStep`).
 Moreover, currently only `OrderedTask` is available meaning that branching and navigating between steps and questions are not supported (yet). 
 
-Nonetheless, we are constantly working on the package so these features are also coming in the feature alongside more type of questions.
+Nonetheless, we are constantly working on the package so these features as well as more type of questions will be implemeted in the future.
