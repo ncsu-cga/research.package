@@ -31,7 +31,13 @@ The [ResearchPackage Flutter API](https://pub.dev/documentation/research_package
 
 There is an [example application](https://github.com/cph-cachet/research.package/tree/master/example/research_package_demo_app) which demonstrates the different features of ResearchPackage as implemented in a Flutter app.
 
+## Who is backing this project?
 
+Research Package is made by [CACHET - Copenhagen Center for Health Technology](http://www.cachet.dk/) and is used in a number of applications and studies. The current project maintainers are [Barnabás Homola](https://github.com/barnabashomola), [Mads Vedel Saaby Christensen](https://github.com/MadsVSChristensen), and [Jakob E. Bardram](http://www.bardram.net)
+
+## How can I contribute?
+
+We are more than happy to take contributions and feedback. Use the [Issues](https://github.com/cph-cachet/research.package/issues) page to file an issue or feature request. Besides general help for enhacement and quality assurance (bug fixing), we welcome input on new answer types. 
 
 
 
