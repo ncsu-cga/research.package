@@ -17,6 +17,22 @@ The main features of ResearchPackage are:
 
 ResearchPackage is part of the overall CACHET Research Platform (CARP) with also provides a Flutter package for mobile and wearable sensing -- called [CARP Mobile Sensing](https://pub.dev/packages/carp_mobile_sensing). By combining ResearchPackage with CARP Mobile Sensing, support for what is called ["Active Tasks"](https://www.researchandcare.org/researchkit/) in ResearchKit can be implemented.
 
+## Documentation
+
+There is a set of tutorials, describing the;
+
+- overall [software architecture](software-architecture) of ResearchPackage
+- how to create an [informed consent](consent) flow 
+- how to define and run a set of [user surveys](survey)
+
+The [ResearchPackage Flutter API](https://pub.dev/documentation/research_package/latest/) is available (and maintained) as part of the package release at pub.dev.
+
+## Example Application
+
+There is an [example application](https://github.com/cph-cachet/research.package/tree/master/example/research_package_demo_app) which demonstrates the different features of ResearchPackage as implemented in a Flutter app.
+
+
+
 
 
 
