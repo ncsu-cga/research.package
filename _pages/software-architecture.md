@@ -57,7 +57,7 @@ See [this article by the Flutter team](https://flutter.dev/docs/cookbook/design/
 
 ## How to set up a Research Package project
 
-Since Research Package is [published to ´pub.dev´](https://pub.dev/packages/research_package), all you have to do is to add its dependency to your `pubspec.yaml` file.
+Since Research Package is [published to `pub.dev](https://pub.dev/packages/research_package), all you have to do is to add its dependency to your `pubspec.yaml` file.
 
 ```dart
   dependencies:
