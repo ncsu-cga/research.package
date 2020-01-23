@@ -5,7 +5,7 @@ permalink: /survey
 toc: true
 ---
 
-> **Note**
+> **Note:**
 > Research Package supports only a limited set of answer formats at the moment. 
 single choice, multiple choice, integer, slider, date time, image choice) This tutorial is limited to present some of these scenarios and giving an introduction on how to combine them into one question (Form step).
 For all the available answer formats please see the [list of available Answer Formats](/answer-formats)!
