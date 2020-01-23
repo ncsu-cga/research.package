@@ -10,9 +10,7 @@ This tutotial describes the overall software architecture of ResearchPackage and
 ## API Naming and Architecture
 
 ### API Naming
-We are following the pattern from Apple's Research Kit's when it comes to naming. There's a prefix ORK (Open Research Kit) before the names of classes, types etc. Following that the class names are starting with the `RP` prefix which stands for Research Package.
-
-For UI widgets we are using the `RPUI` (Research Package UI) prefix.
+We are following the pattern from Apple's Research Kit's when it comes to naming. ResearchKit uses the prefix `ORK` (Open Research Kit) before the names of classes, types etc. Following this naming model, the the class names in ResearchPackage starts a `RP` prefix. UI widgets uses the `RPUI` (Research Package UI) prefix.
 
 > Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
 
