@@ -1,7 +1,8 @@
 ---
 layout: single
-#title: Welcome to ResearchPackage
 ---
+
+# Welcome to ResearchPackage
 
 ResearchPackage is a Flutter [package](https://pub.dartlang.org/packages/research_package) for building research study apps on Android and iOS using [Flutter](https://flutter.dev).
 
