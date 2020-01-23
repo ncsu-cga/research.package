@@ -5,7 +5,9 @@ permalink: /software-architecture
 toc: true
 ---
 
-# Data Flow
+This tutotial describes the overall software architecture of ResearchPackage.
+
+## Data Flow
 
 Research Package uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
 There is a BLoC file responsible for the communication between the Task and the Steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the Question Container and their Question Body is made possible by regular callback functions.
