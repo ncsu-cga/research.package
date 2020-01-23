@@ -10,11 +10,12 @@ toc: true
 single choice, multiple choice, integer, slider, date time, image choice) This tutorial is limited to present some of these scenarios and giving an introduction on how to combine them into one question (Form step).
 For all the available answer formats please see the [list of available Answer Formats](/answer-formats)!
 
-Creating surveys is on of Research Package main modules (besides obtaining informed consent). This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it on the UI, how to combine different questions on one screen and finally how to collect the results.
+Creating surveys is one of the core features of ResearchPackage. This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it in the UI, how to combine different questions on one screen, and finally how to collect the results.
 
 ## Creating Model Objects
 
-As usual, Research Package uses a Task to represent the survey containing the Steps. In this case the Task object will be an [RPOrderedTask]() object and the steps which it holds are [RPQuestionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. (With optional [RPInstructionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html) at the beginning and [RPCompletionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html) at the end)
+ResearchPackage uses a `Task` to represent the survey containing the `Step`s. In this case the task object will be an [`RPOrderedTask`]() object and the steps which it holds are [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html) objects. 
+Optionally, [`RPInstructionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPInstructionStep-class.html) can be put in the beginning and [`RPCompletionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPCompletionStep-class.html) can be put in the end)
 
 > Later, you will see that `.withParams` constructors are being used. This is needed because of the JSON serialization which requires an empty constructor for all the classes eligible for serialization.
 
