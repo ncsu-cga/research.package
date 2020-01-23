@@ -6,7 +6,7 @@ layout: single
 
 ResearchPackage is a Flutter [package](https://pub.dartlang.org/packages/research_package) for building research study apps on Android and iOS using [Flutter](https://flutter.dev).
 
-ResearchPackage is a Flutter implementation of the [Apple ResearchKit](https://www.researchandcare.org/researchkit/) available for iOS (just like  [ResearchStack](http://researchstack.org/)is for Android). The overarching goal of ResearchPackage is to enable developers and researchers to design and build cross-platform (iOS and Android) research applications using the same codebase. The API and UX design of ResearchPackage follows the API and UX of ResearchKit almost 1:1 (with a few adaptations to Flutter, including applying more to a reactive programming model).
+ResearchPackage is a Flutter implementation of the [Apple ResearchKit](https://www.researchandcare.org/researchkit/) available for iOS (just like  [ResearchStack](http://researchstack.org/) is for Android). The overarching goal of ResearchPackage is to enable developers and researchers to design and build cross-platform (iOS and Android) research applications using the same codebase. The API and UX design of ResearchPackage follows the API and UX of ResearchKit almost 1:1 (with a few adaptations to Flutter, including applying more to a reactive programming model).
 
 ResearchPackage is designed from the ground up to meet the requirements of most scientific research, including capturing participant consent, extensible input tasks, and the security and privacy needs necessary for IRB approval. 
 The main features of ResearchPackage are:
@@ -32,7 +32,7 @@ There is an [example application](https://github.com/cph-cachet/research.package
 
 ## Who is backing this project?
 
-Research Package is made by [CACHET - Copenhagen Center for Health Technology](http://www.cachet.dk/) and is used in a number of applications and studies. The current project maintainers are [Barnabás Homola](https://github.com/barnabashomola), [Mads Vedel Saaby Christensen](https://github.com/MadsVSChristensen), and [Jakob E. Bardram](http://www.bardram.net)
+Research Package is made by the [Copenhagen Center for Health Technology (CACHET)](http://www.cachet.dk/) and is used in a number of applications and studies. The current project maintainers are [Barnabás Homola](https://github.com/barnabashomola), [Mads Vedel Saaby Christensen](https://github.com/MadsVSChristensen), and [Jakob E. Bardram](http://www.bardram.net)
 
 ## How can I contribute?
 
