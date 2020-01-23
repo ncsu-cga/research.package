@@ -14,18 +14,6 @@ We are following the pattern from Apple's Research Kit's when it comes to naming
 
 > Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
 
-### BLoC Architecture
-
-ResearchPackage follows the [BLoC architecture](https://medium.com/flutterpub/architecting-your-flutter-project-bd04e144a8f1),
-which is recommended by the [Flutter Team](https://www.youtube.com/watch?v=PLHln7wHgPE).
-In ResearchPackage, the [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is holding the StreamControllers needed for the communication.
-
-### Data Flow
-
-Research Package uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
-There is a BLoC file responsible for the communication between the Task and the Steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the Question Container and their Question Body is made possible by regular callback functions.
-
-
 
 ### Main Domain Model
 
@@ -37,6 +25,14 @@ Below is an example of a hierarchy with a task, three steps, each with a specifi
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/survey_result_hierarchy_figure.png" height="150">
 
+### BLoC Architecture
+
+ResearchPackage follows the [BLoC architecture](https://medium.com/flutterpub/architecting-your-flutter-project-bd04e144a8f1),
+which is recommended by the [Flutter Team](https://www.youtube.com/watch?v=PLHln7wHgPE).
+In ResearchPackage, the [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is holding the StreamControllers needed for the communication.
+
+Following the BLoC architecture, ResearchPackage uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
+There is a BLoC class responsible for the communication between the task and the steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the question container and their question body is made possible by regular callback functions.
 
 
 ## Style and UI Theme
