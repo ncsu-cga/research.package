@@ -8,7 +8,7 @@ toc: true
 > **Note:**
 > Research Package supports only a limited set of answer formats at the moment. 
 single choice, multiple choice, integer, slider, date time, image choice) This tutorial is limited to present some of these scenarios and giving an introduction on how to combine them into one question (Form step).
-For all the available answer formats please see the [list of available Answer Formats](/answer-formats).
+For all the available answer formats please see the [list of available answer formats](/answer-formats).
 
 Creating surveys is one of the core features of ResearchPackage. This tutorial will guide you through how to create the needed domain model objects for a survey task, how to present it in the UI, how to combine different questions on one screen, and finally how to collect the results.
 
@@ -50,7 +50,7 @@ Let's have a look at the available answer formats in ResearchPackage.
 
 In order to create the question step we have to set up the answer format first with a list of choices ([RPChoice](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html)) and the answer style. An `RPChoice` has a text which will be presented to the participant and a value which can be used for other purposes. When saving the result both of the fields will be saved.
 
-The UI representation of this Answer Format looks like this:
+The UI representation of this answer format looks like this:
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/SingleChoiceAnswerFormat.png" width="300">
 
@@ -68,7 +68,7 @@ List<RPChoice> choices = [
 ];
 ```
 
-After that the choices can be passed to the constructor of a choice Answer Format:
+After that the choices can be passed to the constructor of a choice answer format:
 
 ``` dart
 // Pass the list of choices to the answer format constructor
@@ -86,13 +86,13 @@ RPQuestionStep choiceQuestionStep = RPQuestionStep.withAnswerFormat(
 ```
 #### Multiple Choice
 
-The Multiple Choice question is similar to the Single Choice with the difference that the participant is allowed to choose more than one option from the presented choices.
+The multiple choice question is similar to the Single Choice with the difference that the participant is allowed to choose more than one option from the presented choices.
 
-The UI representation of this Answer Format looks like this (see that the small hint text below the Title has changed indicating that the participant is allowed to choose more options as well):
+The UI representation of this answer format looks like this (see that the small hint text below the title has changed indicating that the participant is allowed to choose more options as well):
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/MultipleChoiceAnswerFormat.png" width="300">
 
-The creation of a Question Step like that is similar to the Single Choice Answer Format presented above. First the [RPChoice](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html) objects need to be created and then passed to the the constructor of the [RPChoiceAnswerFormat](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoiceAnswerFormat-class.html) used with the Multiple Choice [ChoiceAnswerStyle](https://pub.dev/documentation/research_package/latest/research_package_model/ChoiceAnswerStyle-class.html) like this: 
+The creation of a Question Step like that is similar to the Single Choice Answer Format presented above. First the [`RPChoice`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoice-class.html) objects need to be created and then passed to the the constructor of the [`RPChoiceAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPChoiceAnswerFormat-class.html) used with the Multiple Choice [`ChoiceAnswerStyle`](https://pub.dev/documentation/research_package/latest/research_package_model/ChoiceAnswerStyle-class.html) like this: 
 
 ```dart
 // Pass the list of choices to the answer format constructor
@@ -106,7 +106,7 @@ The UI representation of this Answer Format looks like the following:
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/IntegerAnswerFormat.png" width="300">
 
-First, the RPIntegerAnswerFormat needs to be instantiated by giving the constructor the lower limit, the upper limit and the suffix.
+First, the [`RPIntegerAnswerFormat`](https://pub.dev/documentation/research_package/latest/research_package_model/RPIntegerAnswerFormat-class.html) needs to be instantiated by giving the constructor the lower limit, the upper limit and the suffix.
 
 ```dart
 RPIntegerAnswerFormat weightIntegerAnswerFormat = RPIntegerAnswerFormat.withParams(0, 200, "KG");
@@ -116,9 +116,9 @@ Research Package will check if the input is an actual number and between the lim
 
 ### Form Step
 
-There are situation when it's beneficial to show multiple questions on the same page as one logical block. For these needs you can use Form Step ([RPFormStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormStep-class.html)). A Form Step consists of multiple [RPQuestionStep](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html)s. (_Read more about it by clicking the links which brings you to the official API documentation_).
+There are situation when it's beneficial to show multiple questions on the same page as one logical block. For these needs you can use the [`RPFormStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPFormStep-class.html). A Form Step consists of multiple [`RPQuestionStep`](https://pub.dev/documentation/research_package/latest/research_package_model/RPQuestionStep-class.html)s. (_Read more about it by clicking the links which brings you to the official API documentation_).
 
-The Form Step is showing the Question Steps as a scrollable list. On the UI it looks like this:
+The form step is showing the question steps as a scrollable list. On the UI it looks like this:
 
 <img src="https://raw.githubusercontent.com/cph-cachet/research.package/master/documentation/images/AnswerFormats/FormAnswerFormat.png" width="300">
 
