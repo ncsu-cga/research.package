@@ -50,21 +50,21 @@ Here you can see an example figure and the actual hierarchy of a result collecte
 
 ## Style and UI Theme
 
-Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the example application where the Theme colors of the parent application are set to different colors.
+Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the [example application](https://github.com/cph-cachet/research.package/tree/master/example/research_package_demo_app) where the theme colors of the parent application are modified.
 
 See [this article by the Flutter team](https://flutter.dev/docs/cookbook/design/themes) on how to Theme your application.
 
 
 ## How to set up a Research Package project
 
-Since Research Package is published to pub, in order to use it just add it to your `pubspec.yaml` file.
+Since Research Package is [published to ´pub.dev´](https://pub.dev/packages/research_package), all you have to do is to add its dependency to your `pubspec.yaml` file.
 
 ```dart
   dependencies:
      research_package: ^0.1.0
 ```
 
-After you run `flutter packages get` command you are able to import and start using Research Package. 
+After you run the `flutter packages get` command, you are able to import and start using ResearchPackage. 
 You can import the whole package including the Model and UI libraries:
 
 ```dart
@@ -83,4 +83,4 @@ import 'package:research_package/ui.dart';
 Research Package currently supports only a few [answer formats](answer-formats) which can be put on the separate pages or combined in one page (using a `FormStep`).
 Moreover, currently only `OrderedTask` is available meaning that branching and navigating between steps and questions are not supported (yet). 
 
-Nonetheless, we are constantly working on the package so these features as well as more type of questions will be implemeted in the future.
+Nonetheless, we are constantly working on the package so these features, as well as more type of questions will be implemeted in the future.
