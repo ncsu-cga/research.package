@@ -10,7 +10,7 @@ This tutotial describes the overall software architecture of ResearchPackage and
 ## API and Architecture
 
 ### API Naming
-We are following the pattern from Apple's Research Kit's when it comes to naming. ResearchKit uses the prefix `ORK` (Open Research Kit) before the names of classes, types etc. Following this naming model, the the class names in ResearchPackage starts a `RP` prefix. UI widgets uses the `RPUI` (Research Package UI) prefix.
+We are following the pattern from Apple's Research Kit's when it comes to naming. ResearchKit uses the prefix `ORK` (Open Research Kit) before the names of classes, types etc. Following this naming model, the class names in ResearchPackage starts a `RP` prefix. UI widgets uses the `RPUI` (Research Package UI) prefix.
 
 > Note that objects starting with `RP` are part of the Model (e.g. `RPConsentDocument`) while those which start with `RPUI` are part of the UI library (e.g. `RPUIVisualConsentStep`).
 
@@ -31,20 +31,21 @@ ResearchPackage follows the [BLoC architecture](https://medium.com/flutterpub/ar
 which is recommended by the [Flutter Team](https://www.youtube.com/watch?v=PLHln7wHgPE).
 In ResearchPackage, the [BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html) is holding the StreamControllers needed for the communication.
 
-Following the BLoC architecture, ResearchPackage uses streams and regular callbacks for internal communication (e.g. between Task and Steps). 
-There is a BLoC class responsible for the communication between the task and the steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). The communication between the question container and their question body is made possible by regular callback functions.
+Following the BLoC architecture, ResearchPackage uses streams and callbacks for internal communication (e.g. between Task and Steps). 
+There is a BLoC class responsible for the communication between the task and the steps it's containing ([BlocTask](https://pub.dev/documentation/research_package/latest/research_package_model/BlocTask-class.html)). Communication between the question container and their question body is made possible via callback functions.
 
 
 ## Style and UI Theme
 
-Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). As an example have a look at the [example application](https://github.com/cph-cachet/research.package/tree/master/example/research_package_demo_app) where the theme colors of the parent application are modified.
+Research Package is accessing the parent application's style through Flutter's `context` feature. This means that the given `Theme` of the application is shared also with Research Package and appears in its styling (colors, font styles...). 
+As an example, the [example application](https://github.com/cph-cachet/research.package/tree/master/example/research_package_demo_app) shows how the theme colors of the parent application are modified, and this is refelcted in the ResearchPackage screens.
 
 See [this article by the Flutter team](https://flutter.dev/docs/cookbook/design/themes) on how to Theme your application.
 
 
-## How to set up a Research Package project
+## How to set up a ResearchPackage project
 
-Since Research Package is [published to `pub.dev](https://pub.dev/packages/research_package), all you have to do is to add its dependency to your `pubspec.yaml` file.
+Research Package is [published to `pub.dev`](https://pub.dev/packages/research_package) and all you have to do is to add its dependency to your `pubspec.yaml` file.
 
 ```dart
   dependencies:
@@ -58,7 +59,7 @@ You can import the whole package including the Model and UI libraries:
 import 'package:research_package/research_package.dart';
 ```
 
-Or with the following lines you can decide which library of the package you want to gain access to:
+Or you can decide which library of the package you want to use:
 
 ``` dart
 import 'package:research_package/model.dart';
@@ -67,7 +68,7 @@ import 'package:research_package/ui.dart';
 
 ## Limitations
 
-Research Package currently supports only a few [answer formats](answer-formats) which can be put on the separate pages or combined in one page (using a `FormStep`).
+Research Package currently supports only a few [answer formats](answer-formats) which can be put on separate pages or combined in one page (using a `FormStep`).
 Moreover, currently only `OrderedTask` is available meaning that branching and navigating between steps and questions are not supported (yet). 
 
 Nonetheless, we are constantly working on the package so these features, as well as more type of questions will be implemeted in the future.
