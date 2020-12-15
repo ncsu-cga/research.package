@@ -9,14 +9,25 @@ class RPNavigableOrderedTask extends RPOrderedTask {
 //  List<RPSkipStepNavigationRule> _skipStepNavigationRules;
 //  List<RPStepModifier> _stepModifiers;
   bool shouldReportProgress;
+  
+  // MS: For RPPredicateStepNavigationRule case
+  Map<String, List<RPStep>> predicateSteps;
 
-  RPNavigableOrderedTask(String identifier, steps, {closeAfterFinished = true, shouldReportProgress = true})
+  RPNavigableOrderedTask(String identifier, steps,
+      {closeAfterFinished = true,
+      shouldReportProgress = true,
+      this.predicateSteps})
       : super(identifier, steps, closeAfterFinished: closeAfterFinished) {
     _stepNavigationRules = Map<String, RPStepNavigationRule>();
   }
 
   /// A dictionary of step identifier Strings and their corresponding navigation rule([RPStepNavigationRule]).
-  Map<String, RPStepNavigationRule> get stepNavigationRules => this._stepNavigationRules;
+  Map<String, RPStepNavigationRule> get stepNavigationRules =>
+      this._stepNavigationRules;
+
+  Future init() async {
+    print('Init');
+  }
 
 //  List<RPSkipStepNavigationRule> get skipStepNavigationRules => this._skipStepNavigationRules;
 //  List<RPStepModifier> get stepModifiers => this._stepModifiers;
@@ -50,10 +61,12 @@ class RPNavigableOrderedTask extends RPOrderedTask {
 
       switch (rule.runtimeType) {
         case RPStepReorganizerRule:
-          RPStepResult tempResult = (rule as RPStepReorganizerRule).resultSelector.getResult();
+          RPStepResult tempResult =
+              (rule as RPStepReorganizerRule).resultSelector.getResult();
           List identifiersToKeep = [];
           (tempResult.results["answer"] as List<RPChoice>).forEach((element) {
-            String id = (rule as RPStepReorganizerRule)._removalMap[element.value];
+            String id =
+                (rule as RPStepReorganizerRule)._removalMap[element.value];
             identifiersToKeep.add(id);
           });
 
@@ -62,7 +75,8 @@ class RPNavigableOrderedTask extends RPOrderedTask {
             _lastStep = steps.last;
           }
 
-          steps.removeWhere((step) => !identifiersToKeep.contains(step.identifier));
+          steps.removeWhere(
+              (step) => !identifiersToKeep.contains(step.identifier));
 
           steps.add(_lastStep);
 
@@ -71,30 +85,57 @@ class RPNavigableOrderedTask extends RPOrderedTask {
           break;
         case RPStepJumpRule:
           RPStepJumpRule jumpRule = (rule as RPStepJumpRule);
-          RPStepResult tempResult = (rule as RPStepJumpRule).resultSelector.getResult();
+          RPStepResult tempResult =
+              (rule as RPStepJumpRule).resultSelector.getResult();
 
-          _stepToReturn = _steps.firstWhere(
-              (step) => step.identifier == jumpRule._answerMap[tempResult.results["answer"].first.value]);
+          _stepToReturn = _steps.firstWhere((step) =>
+              step.identifier ==
+              jumpRule._answerMap[tempResult.results["answer"].first.value]);
 
           break;
         case RPPredicateStepNavigationRule:
+          // Remove predicate steps from task items
+          int _currentIdx = _steps.indexOf(step);
+          if (predicateSteps != null) {
+            // Get current step index and length
+            if (predicateSteps.containsKey(step.identifier)) {
+              // print('items remove: ');
+              for (var i = _currentIdx; i < _steps.length; i++) {
+                predicateSteps[step.identifier].forEach((item) {
+                  if (_steps[i].identifier == item.identifier) {
+                    print(item.identifier);
+                    steps.remove(_steps[i]);
+                  }
+                });
+              }
+            }
+          }
+          // Add predicate steps based on answers
+          int _counter = _currentIdx;
           (rule as RPPredicateStepNavigationRule)
               .resultPredicatesWithDestinationIdentifiers
               .forEach((resultPredicate, destinationStepIdentifier) {
             // Catching the first
+            
             if (resultPredicate.getPredictionResult()) {
-              _steps.forEach((step) {
-                if (step.identifier == destinationStepIdentifier) {
-                  _stepToReturn = step;
+              predicateSteps[step.identifier].asMap().forEach((idx, item) {
+                if (destinationStepIdentifier == item.identifier) {
+                  _counter++;
+                  // print('insert: ' +
+                  //     'At: ' +
+                  //     _counter.toString() +
+                  //     ' ' +
+                  //     item.identifier);
+                  steps.insert(_counter, item);
                 }
               });
-            } else {
-              _returnNextQuestion();
             }
           });
+          _returnNextQuestion();
           break;
         case RPDirectStepNavigationRule:
-          String destinationStepIdentifier = (rule as RPDirectStepNavigationRule).destinationStepIdentifier;
+          String destinationStepIdentifier =
+              (rule as RPDirectStepNavigationRule).destinationStepIdentifier;
           _steps.forEach((step) {
             if (step.identifier == destinationStepIdentifier) {
               _stepToReturn = step;
@@ -131,7 +172,8 @@ class RPNavigableOrderedTask extends RPOrderedTask {
   }
 
   /// Returns the navigation rule for the given step identifier
-  RPStepNavigationRule navigationRuleForTriggerStepIdentifier(String triggerStepIdentifier) {
+  RPStepNavigationRule navigationRuleForTriggerStepIdentifier(
+      String triggerStepIdentifier) {
     return _stepNavigationRules[triggerStepIdentifier];
   }
 
