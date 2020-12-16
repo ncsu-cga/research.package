@@ -9,15 +9,22 @@ class RPNavigableOrderedTask extends RPOrderedTask {
 //  List<RPSkipStepNavigationRule> _skipStepNavigationRules;
 //  List<RPStepModifier> _stepModifiers;
   bool shouldReportProgress;
-  
+
   // MS: For RPPredicateStepNavigationRule case
   Map<String, List<RPStep>> predicateSteps;
-
-  RPNavigableOrderedTask(String identifier, steps,
-      {closeAfterFinished = true,
-      shouldReportProgress = true,
-      this.predicateSteps})
-      : super(identifier, steps, closeAfterFinished: closeAfterFinished) {
+  RPNavigableOrderedTask(
+    String identifier,
+    steps, {
+    closeAfterFinished = true,
+    shouldReportProgress = true,
+    String navigationPageId,
+    this.predicateSteps
+  }) : super(
+          identifier,
+          steps,
+          closeAfterFinished: closeAfterFinished,
+          navigationPageId: navigationPageId
+        ) {
     _stepNavigationRules = Map<String, RPStepNavigationRule>();
   }
 
@@ -116,7 +123,7 @@ class RPNavigableOrderedTask extends RPOrderedTask {
               .resultPredicatesWithDestinationIdentifiers
               .forEach((resultPredicate, destinationStepIdentifier) {
             // Catching the first
-            
+
             if (resultPredicate.getPredictionResult()) {
               predicateSteps[step.identifier].asMap().forEach((idx, item) {
                 if (destinationStepIdentifier == item.identifier) {

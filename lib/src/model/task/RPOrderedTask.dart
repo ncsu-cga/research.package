@@ -8,8 +8,10 @@ class RPOrderedTask extends RPTask {
   List<RPStep> _steps;
   int _numberOfQuestionSteps;
   bool _isConsentTask;
+  String navigationPageId; // For page navigaton
 
-  RPOrderedTask(String identifier, this._steps, {bool closeAfterFinished = true})
+  RPOrderedTask(String identifier, this._steps,
+      {bool closeAfterFinished = true, this.navigationPageId})
       : super(identifier, closeAfterFinished: closeAfterFinished) {
     this._numberOfQuestionSteps = 0;
     this._isConsentTask = false;
