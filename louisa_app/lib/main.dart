@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: OneTimeHealthScreen.id,
+      initialRoute: DailyHealthScreen.id,
       routes: {
         OneTimeHealthScreen.id: (context) => OneTimeHealthScreen(),
         DailyHealthScreen.id: (context) => DailyHealthScreen(),

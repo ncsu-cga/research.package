@@ -12,19 +12,14 @@ class RPNavigableOrderedTask extends RPOrderedTask {
 
   // MS: For RPPredicateStepNavigationRule case
   Map<String, List<RPStep>> predicateSteps;
-  RPNavigableOrderedTask(
-    String identifier,
-    steps, {
-    closeAfterFinished = true,
-    shouldReportProgress = true,
-    String navigationPageId,
-    this.predicateSteps
-  }) : super(
-          identifier,
-          steps,
-          closeAfterFinished: closeAfterFinished,
-          navigationPageId: navigationPageId
-        ) {
+  RPNavigableOrderedTask(String identifier, steps,
+      {closeAfterFinished = true,
+      shouldReportProgress = true,
+      String navigationPageId,
+      this.predicateSteps})
+      : super(identifier, steps,
+            closeAfterFinished: closeAfterFinished,
+            navigationPageId: navigationPageId) {
     _stepNavigationRules = Map<String, RPStepNavigationRule>();
   }
 
@@ -32,9 +27,9 @@ class RPNavigableOrderedTask extends RPOrderedTask {
   Map<String, RPStepNavigationRule> get stepNavigationRules =>
       this._stepNavigationRules;
 
-  Future init() async {
-    print('Init');
-  }
+  // Future init() async {
+  //   print('Init');
+  // }
 
 //  List<RPSkipStepNavigationRule> get skipStepNavigationRules => this._skipStepNavigationRules;
 //  List<RPStepModifier> get stepModifiers => this._stepModifiers;
@@ -122,20 +117,20 @@ class RPNavigableOrderedTask extends RPOrderedTask {
           (rule as RPPredicateStepNavigationRule)
               .resultPredicatesWithDestinationIdentifiers
               .forEach((resultPredicate, destinationStepIdentifier) {
-            // Catching the first
-
-            if (resultPredicate.getPredictionResult()) {
-              predicateSteps[step.identifier].asMap().forEach((idx, item) {
-                if (destinationStepIdentifier == item.identifier) {
-                  _counter++;
-                  // print('insert: ' +
-                  //     'At: ' +
-                  //     _counter.toString() +
-                  //     ' ' +
-                  //     item.identifier);
-                  steps.insert(_counter, item);
-                }
-              });
+            print(resultPredicate.getPredictionResult());
+            if (resultPredicate.getPredictionResult()) {              
+                predicateSteps[step.identifier].asMap().forEach((idx, item) {
+                  if (destinationStepIdentifier == item.identifier) {
+                    _counter++;
+                    // print('insert: ' +
+                    //     'At: ' +
+                    //     _counter.toString() +
+                    //     ' ' +
+                    //     item.identifier);
+                    steps.insert(_counter, item);
+                  }
+                });
+              
             }
           });
           _returnNextQuestion();

@@ -441,7 +441,7 @@ RPPredicateStepNavigationRule healthChoiceNavigationRule =
 //     noNextChoicePredicate: dailyHealthQuestionInstruction.identifier,
 //   },
 // );
-Map<String, List<RPStep>> healthPredicateSteps = {
+Map<String, dynamic> healthPredicateSteps = {
   'healthQuestionStepID': [
     respiratoryQuestionStep,
     cancerQuestionStep,
@@ -454,22 +454,21 @@ Map<String, List<RPStep>> healthPredicateSteps = {
 RPNavigableOrderedTask navigableSurveyTask = RPNavigableOrderedTask(
   'NavigableTaskID',
   [
-    // formStep,
-    // femaleQuestionStep,
-    // maleQuestionStep,
-    // otherQuestionStep,
-    // raceEthnicityQuestionStep,
-    // incomeQuestionStep,
-    // educationQuestionStep,
-    // exerciseQuestionStep,
-    // exerciseLocationQuestionStep,
-    // howLongOutsideQuestionStep,
-    // numberOfHouseholdQuestionStep,
-    // cigarettesQuestionStep,
-    // vapeQuestionStep,
-    // tabaccoQuestionStep,
-    // householdSmokingQuestionStep,
-    // healthQuestionInstruction,
+    femaleQuestionStep,
+    maleQuestionStep,
+    otherQuestionStep,
+    raceEthnicityQuestionStep,
+    incomeQuestionStep,
+    educationQuestionStep,
+    exerciseQuestionStep,
+    exerciseLocationQuestionStep,
+    howLongOutsideQuestionStep,
+    numberOfHouseholdQuestionStep,
+    cigarettesQuestionStep,
+    vapeQuestionStep,
+    tabaccoQuestionStep,
+    householdSmokingQuestionStep,
+    healthQuestionInstruction,
     healthQuestionStep,
     respiratoryQuestionStep,
     cancerQuestionStep,
@@ -479,21 +478,20 @@ RPNavigableOrderedTask navigableSurveyTask = RPNavigableOrderedTask(
     // dailyHealthQuestionInstruction,
     // symptomsTodayQuestionStep,
     // symptomsQuestionStep,
-    // completionStep,
-    //
+    completionStep,
   ],
   predicateSteps: healthPredicateSteps,
   closeAfterFinished: false,
   navigationPageId: DailyHealthScreen.id,
 )
-// ..setNavigationRuleForTriggerStepIdentifier(
-//     femaleBranchRule, femaleQuestionStep.identifier)
-// ..setNavigationRuleForTriggerStepIdentifier(
-//     maleBranchRule, maleQuestionStep.identifier)
-// ..setNavigationRuleForTriggerStepIdentifier(
-//     otherBranchRule, otherQuestionStep.identifier)
-// ..setNavigationRuleForTriggerStepIdentifier(
-//     exerciseBranchRule, exerciseQuestionStep.identifier)
+..setNavigationRuleForTriggerStepIdentifier(
+    femaleBranchRule, femaleQuestionStep.identifier)
+..setNavigationRuleForTriggerStepIdentifier(
+    maleBranchRule, maleQuestionStep.identifier)
+..setNavigationRuleForTriggerStepIdentifier(
+    otherBranchRule, otherQuestionStep.identifier)
+..setNavigationRuleForTriggerStepIdentifier(
+    exerciseBranchRule, exerciseQuestionStep.identifier)
 ..setNavigationRuleForTriggerStepIdentifier(
     healthChoiceNavigationRule, healthQuestionStep.identifier);
 

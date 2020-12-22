@@ -4,6 +4,19 @@ const kPrimaryColor = Color(0xFF4F3C9E);
 
 const kPrimaryLightColor = Color(0xFF6251A9);
 
+const dialogText = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w300,
+  color: Colors.black,
+);
+
+const urlLinkText = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
+  color: Colors.blueAccent,
+  decoration: TextDecoration.underline,
+);
+
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter your value',
   prefixIcon: Icon(

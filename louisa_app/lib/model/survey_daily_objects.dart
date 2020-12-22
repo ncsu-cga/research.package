@@ -1,4 +1,5 @@
 import 'package:research_package/research_package.dart';
+import 'package:louisa_app/model/custom_step.dart';
 
 //----- Yes & No answers
 List<RPChoice> yesNo = [
@@ -52,17 +53,56 @@ RPQuestionStep symptomsQuestionStep = RPQuestionStep.withAnswerFormat(
   symptomsAnswerFormat,
 );
 
+RPResultPredicate choice911Predicate =
+    RPResultPredicate.forChoiceQuestionResult(
+        resultSelector: RPResultSelector.forStepId('symptomsQuestionStepID'),
+        expectedValue: [3, 12],
+        choiceQuestionResultPredicateMode:
+            ChoiceQuestionResultPredicateMode.Containing);
+
+RPResultPredicate choiceCallDoctorPredicate =
+    RPResultPredicate.forChoiceQuestionResult(
+        resultSelector: RPResultSelector.forStepId('symptomsQuestionStepID'),
+        expectedValue: [14],
+        choiceQuestionResultPredicateMode:
+            ChoiceQuestionResultPredicateMode.Containing);
+
+RPPredicateStepNavigationRule dialogNavigationRule =
+    RPPredicateStepNavigationRule(
+  {
+    choice911Predicate: dialog911Step.identifier,
+    choiceCallDoctorPredicate: dialogDoctorStep.identifier,
+    // noNextChoicePredicate: dailyHealthQuestionInstruction.identifier,
+  },
+);
+
 RPCompletionStep completionStep = RPCompletionStep("completionID")
   ..title = "Finished"
   ..text = "Thank you for filling out the survey!";
 
+CustomStep dialog911Step = CustomStep('call911ID')..dialog = 'CALL_EMERGENCY';
+CustomStep dialogDoctorStep = CustomStep('callDoctorID')
+  ..dialog = 'CALL_DOCTOR';
+
+Map<String, List<CustomStep>> dialogPredicateSteps = {
+  'symptomsQuestionStepID': [dialog911Step, dialogDoctorStep]
+};
+
 RPNavigableOrderedTask navigableDailyHealthSurveyTask = RPNavigableOrderedTask(
-  'dailyHealthSurveyTaskID',
-  [
-    dailyHealthQuestionInstruction,
-    symptomsTodayQuestionStep,
-    symptomsQuestionStep,
-    completionStep,
-  ],
-)..setNavigationRuleForTriggerStepIdentifier(
-    symptomsTodayBranchRule, symptomsTodayQuestionStep.identifier);
+    'dailyHealthSurveyTaskID',
+    [
+      // dailyHealthQuestionInstruction,
+      // symptomsTodayQuestionStep,
+      symptomsQuestionStep,
+      dialog911Step,
+
+      dialogDoctorStep,
+
+      completionStep,
+    ],
+    // closeAfterFinished: false,
+    predicateSteps: dialogPredicateSteps)
+  // ..setNavigationRuleForTriggerStepIdentifier(
+  //     symptomsTodayBranchRule, symptomsTodayQuestionStep.identifier)
+  ..setNavigationRuleForTriggerStepIdentifier(
+      dialogNavigationRule, symptomsQuestionStep.identifier);

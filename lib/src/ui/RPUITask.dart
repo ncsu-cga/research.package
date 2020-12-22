@@ -75,9 +75,10 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
               Navigator.of(context).pop();
             } else {
               // Exit current page
-              Navigator.of(context).pop();
-              // Navigate another page
-              Navigator.pushNamed(context, widget.task.navigationPageId);
+              // Navigator.of(context).pop();
+              // Navigate to another page
+              Navigator.popAndPushNamed(context, widget.task.navigationPageId);
+              // Navigator.pushNamed(context, widget.task.navigationPageId);
             }
             break;
           }
@@ -263,7 +264,8 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
         case RPConsentReviewStep:
           return null;
           break;
-        default:
+        case RPInstructionStep:
+        case RPQuestionStep:
           return <Widget>[
             _activeSteps.length == 1 || !navigableTask
                 ? null
@@ -297,6 +299,10 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
               },
             ),
           ];
+          break;
+        default:
+          return null;
+          break;
       }
     }
 
